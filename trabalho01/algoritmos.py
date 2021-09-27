@@ -104,6 +104,11 @@ def bigramas(text):
 #https://www.nltk.org/book/ch01.html
 
 """
+listaDois = listaUm.copy() # Tire uma copia da listaUm
+listaDois.remove(3)
+
+
+
 f = open(listName[0], 'r', encoding="utf-8")
 listaPalavras = []
 print(len(listaPalavras))
