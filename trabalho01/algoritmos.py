@@ -1,6 +1,7 @@
 import os
 import nltk
 from nltk.corpus import stopwords
+import nltk.collocations
 
 nameDir = "./corpus"
 textos = []
@@ -21,6 +22,7 @@ def montarString(diretorio):
     f = open(diretorio, 'r', encoding="utf-8")
     texto = f.read()
     f.close()
+
     return texto
 
 
@@ -79,14 +81,14 @@ def calculoDaPropocao(text, tupla):
     """
     # [(word[0], word[1]/len(text)) for word in words]
 
-    return tupla[1]/len(text)
+    return tupla[1]/len(text.split(' '))
 
 
 def removerStopWords(text):
     """Remove as stop words de textos em portugues"""
 
     stop_words = stopwords.words('portuguese')
-    return [word for word in text if word not in stop_words]
+    return [word for word in text.split(' ') if word not in stop_words]
 
 
 def calcHepaxes(text):
@@ -95,6 +97,9 @@ def calcHepaxes(text):
 
     return fdist.hapaxes()
 
+
+def calCollocations(text):
+    return nltk.collocations(text)
 
 def bigramas(text):
     print(text)
